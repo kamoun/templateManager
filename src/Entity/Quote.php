@@ -83,11 +83,11 @@ class Quote
 
     public static function renderHtml(Quote $quote)
     {
-        return '<p>' . $quote->id . '</p>';
+        return '<p>' . $quote->getId() . '</p>';
     }
 
     public static function renderText(Quote $quote)
     {
-        return (string) $quote->id;
+        return (string) $quote->getId();
     }
 }

@@ -19,11 +19,11 @@ $faker = \Faker\Factory::create();
 
 $template = new Template(
     1,
-    'Votre voyage avec une agence locale [quote:destination_name]',
+    'Votre voyage avec une agence locale [quote:country]',
     "
 Bonjour [user:first_name],
 
-Merci d'avoir contacté un agent local pour votre voyage [quote:destination_name].
+Merci d'avoir contacté un agent local pour votre voyage [quote:country].
 
 Bien cordialement,
 
@@ -39,4 +39,4 @@ $message = $templateManager->getTemplateComputed(
     ]
 );
 
-echo $message->subject . "\n" . $message->content;
+echo $message->getSubject() . "\n" . $message->getContent();

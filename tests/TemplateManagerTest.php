@@ -44,11 +44,11 @@ class TemplateManagerTest extends PHPUnit_Framework_TestCase
 
         $template = new Template(
             1,
-            'Votre voyage avec une agence locale [quote:destination_name]',
+            'Votre voyage avec une agence locale [quote:country]',
             "
 Bonjour [user:first_name],
 
-Merci d'avoir contacté un agent local pour votre voyage [quote:destination_name].
+Merci d'avoir contacté un agent local pour votre voyage [quote:country].
 
 Bien cordialement,
 
@@ -64,16 +64,16 @@ www.evaneos.com
             ]
         );
 
-        $this->assertEquals('Votre voyage avec une agence locale ' . $expectedDestination->countryName, $message->subject);
+        $this->assertEquals('Votre voyage avec une agence locale ' . $expectedDestination->getCountryName(), $message->getSubject());
         $this->assertEquals("
-Bonjour " . $expectedUser->firstname . ",
+Bonjour " . $expectedUser->getFirstname() . ",
 
-Merci d'avoir contacté un agent local pour votre voyage " . $expectedDestination->countryName . ".
+Merci d'avoir contacté un agent local pour votre voyage " . $expectedDestination->getCountryName() . ".
 
 Bien cordialement,
 
 L'équipe Evaneos.com
 www.evaneos.com
-", $message->content);
+", $message->getContent());
     }
 }
